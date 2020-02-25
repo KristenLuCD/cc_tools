@@ -79,7 +79,7 @@ def make_level_pack_from_json(json_data):
                 for button in field["red_buttons"]:
                     bx, by = button[0], button[1]
                     # create a new CloningMachineControl object
-                    CM = cc_classes.CCTrapControl(bx, by, tx, ty)
+                    CM = cc_classes.CCCloningMachineControl(bx, by, tx, ty)
                     cloning_controls.append(CM)
                 # create a new CloningMachineControlsField object
                 F5 = cc_classes.CCCloningMachineControlsField(cloning_controls)
