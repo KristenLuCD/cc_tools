@@ -85,6 +85,7 @@ class CCTrapControl:
         """
         self.button_coord = CCCoordinate(bx, by)
         self.trap_coord = CCCoordinate(tx, ty)
+        self.machine_coord = CCCoordinate(tx, ty)
 
     def __str__(self):
         return "button"+str(self.button_coord)+", trap"+str(self.trap_coord)

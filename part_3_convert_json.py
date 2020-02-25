@@ -58,7 +58,33 @@ def make_level_pack_from_json(json_data):
                 # create a new MonsterMovementField object
                 F10 = cc_classes.CCMonsterMovementField(coordinate)
                 new_level.add_field(F10)
-      
+
+            elif field["field_int"] == 4:
+                trap_controls = []
+                tx, ty = field["trap"][0], field["trap"][1]
+                # Loop through the brown_buttons
+                for button in field["brown_buttons"]:
+                    bx, by = button[0], button[1]
+                    # create a new TrapControl object
+                    T = cc_classes.CCTrapControl(bx, by, tx, ty)
+                    trap_controls.append(T)
+                # create a new TrapControlsField object
+                F4 = cc_classes.CCTrapControlsField(trap_controls)
+                new_level.add_field(F4)
+
+            elif field["field_int"] == 5:
+                cloning_controls = []
+                tx, ty = field["cloning_machine"][0], field["cloning_machine"][1]
+                # Loop through the red_buttons
+                for button in field["red_buttons"]:
+                    bx, by = button[0], button[1]
+                    # create a new CloningMachineControl object
+                    CM = cc_classes.CCTrapControl(bx, by, tx, ty)
+                    cloning_controls.append(CM)
+                # create a new CloningMachineControlsField object
+                F5 = cc_classes.CCCloningMachineControlsField(cloning_controls)
+                new_level.add_field(F5)
+        # add level to level pack
         new_level_pack.add_level(new_level)
     return new_level_pack
 
@@ -74,4 +100,4 @@ make_level_pack_from_json(json_data)
 new_level_pack = make_level_pack_from_json(json_data)
 print(new_level_pack)
 #Save converted data to DAT file
-cc_dat_utils.write_cc_level_pack_to_dat(new_level_pack, "data/TEST.dat")
+cc_dat_utils.write_cc_level_pack_to_dat(new_level_pack, "data/kexinl_cc1.dat")
